@@ -18,4 +18,6 @@
 
 /config 
   /initializers
-    .omniauth
+    .api_key
+    .auth_token
+    .password
