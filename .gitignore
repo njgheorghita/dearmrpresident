@@ -20,4 +20,3 @@
   /initializers
     .api_key
     .auth_token
-    .password
