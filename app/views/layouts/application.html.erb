@@ -9,6 +9,12 @@
   </head>
 
   <body>
+    <% if current_user %>
+      <%= "#{current_user.name} is logged in" %>
+      <%= link_to "Sign Out", session_path(current_user), :method => 'delete' %>
+    <% else %>
+      <%= link_to "Login with Facebook", "/auth/facebook" %>
+    <% end %>
     <%= yield %>
   </body>
 </html>
