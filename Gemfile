@@ -41,6 +41,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.5'
   gem 'launchy'
   gem 'rack_session_access'
+  gem 'capybara'
 end
 
 group :development do

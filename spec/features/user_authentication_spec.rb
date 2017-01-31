@@ -3,6 +3,7 @@ require 'rails_helper'
 describe 'User logs in via Facebook Oauth' do 
   scenario 'and can see option to create letter' do 
     user = User.create(name: "Nick")
+    
     page.set_rack_session(user_id: user.id)
 
     visit root_path
