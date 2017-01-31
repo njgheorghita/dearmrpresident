@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   get '/auth/facebook/callback',  to: 'sessions#new'
   get '/auth/failure',            to: 'home#index'
   resources :sessions,            only: [:destroy]
-  resources :user,                only: [:new]
+  resources :user,                only: [:new, :update]
 
 end

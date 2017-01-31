@@ -40,6 +40,7 @@ group :development, :test do
   gem 'pry-state'
   gem 'rspec-rails', '~> 3.5'
   gem 'launchy'
+  gem 'rack_session_access'
 end
 
 group :development do
