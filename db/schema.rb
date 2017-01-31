@@ -30,6 +30,9 @@ ActiveRecord::Schema.define(version: 20170131141401) do
     t.string   "uid"
     t.string   "email"
     t.string   "image"
+    t.string   "address"
+    t.string   "state"
+    t.string   "zipcode"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
