@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   get '/auth/failure',            to: 'home#index'
   resources :sessions,            only: [:destroy]
   resources :user,                only: [:new, :update]
+  resources :letter,              only: [:new]
 
 end
