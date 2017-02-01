@@ -6,15 +6,16 @@ class PurchasesController < ApplicationController
 
   def create
     purchase = Purchase.create(purchase_params)
-    @letter = Letter.find(purchase.letter_id)
-    if order_letter(purchase)
-      @letter.status = "en route"
-      @letter.save
-      redirect_to root_path
-    else
-      flash[:danger] = "unsuccessful transaction"
-      redirect_to new_purchase(:letter_id => @letter.id)
-    end
+    redirect_to new_charge_path(:purchase => purchase)
+    # @letter = Letter.find(purchase.letter_id)
+    # if order_letter(purchase)
+    #   @letter.status = "en route"
+    #   @letter.save
+    #   redirect_to root_path
+    # else
+    #   flash[:danger] = "unsuccessful transaction"
+    #   redirect_to new_purchase(:letter_id => @letter.id)
+    # end
   end
 
   def order_letter(purchase)

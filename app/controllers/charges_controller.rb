@@ -1,5 +1,6 @@
 class ChargesController < ApplicationController
   def new
+    byebug
   end
 
   def create
@@ -17,8 +18,9 @@ class ChargesController < ApplicationController
       :currency     => 'usd'
     )
 
-    if charge.status == "succeeded"
-      redirect_to
+    byebug
+    # if charge.status == "succeeded"
+    #   redirect_to
 
     rescue Stripe::CardError => e 
       flash[:error] = e.message

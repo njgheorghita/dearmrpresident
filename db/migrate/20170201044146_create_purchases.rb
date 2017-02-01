@@ -17,6 +17,7 @@ class CreatePurchases < ActiveRecord::Migration[5.0]
       t.string  :from_address_zip
       t.string  :file
       t.string  :data
+      t.string  :payment_status
       t.boolean :color
       
       t.timestamps
