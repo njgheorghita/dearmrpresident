@@ -20,3 +20,6 @@
   /initializers
     .api_key
     .auth_token
+
+# Ignore application configuration
+/config/application.yml
