@@ -19,7 +19,6 @@ class PurchasesController < ApplicationController
 
   def order_letter(purchase)
     politician = Politician.new.donald_trump
-    byebug
     lob.letters.create(
       description: purchase.description, 
       to: {
