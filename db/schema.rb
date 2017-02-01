@@ -46,13 +46,13 @@ ActiveRecord::Schema.define(version: 20170201044146) do
     t.string   "from_address_line"
     t.string   "from_address_city"
     t.string   "from_address_state"
-    t.string   "from_address_county"
+    t.string   "from_address_country"
     t.string   "from_address_zip"
     t.string   "file"
     t.string   "data"
     t.boolean  "color"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
   create_table "users", force: :cascade do |t|

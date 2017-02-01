@@ -13,7 +13,7 @@ class CreatePurchases < ActiveRecord::Migration[5.0]
       t.string  :from_address_line
       t.string  :from_address_city
       t.string  :from_address_state
-      t.string  :from_address_county
+      t.string  :from_address_country
       t.string  :from_address_zip
       t.string  :file
       t.string  :data
