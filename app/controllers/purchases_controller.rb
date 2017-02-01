@@ -18,23 +18,25 @@ class PurchasesController < ApplicationController
   end
 
   def order_letter(purchase)
+    politician = Politician.new.donald_trump
+    byebug
     lob.letters.create(
       description: purchase.description, 
       to: {
-        name: purchase.to_name, 
-        address_line1: purchase.to_address_line, 
-        address_state: purchase.to_address_state,
-        address_city: purchase.to_address_city,
-        address_country: purchase.to_address_country,
-        address_zip: purchase.to_address_zip
+        name:             politician[:name], 
+        address_line1:    politician[:address_line], 
+        address_state:    politician[:address_state],
+        address_city:     politician[:address_city],
+        address_country:  politician[:address_country],
+        address_zip:      politician[:address_zip]
       }, 
       from: {
-        name: purchase.from_name,
-        address_line1: purchase.from_address_line,
-        address_state: purchase.from_address_state,
-        address_city: purchase.from_address_city,
-        address_country: purchase.from_address_country,
-        address_zip: purchase.from_address_zip
+        name:             purchase.from_name,
+        address_line1:    purchase.from_address_line,
+        address_state:    purchase.from_address_state,
+        address_city:     purchase.from_address_city,
+        address_country:  purchase.from_address_country,
+        address_zip:      purchase.from_address_zip
       },
       file: purchase.file ,
       data: {
@@ -45,16 +47,11 @@ class PurchasesController < ApplicationController
   end
 
   private 
+
   def purchase_params
     params.require(:purchase).permit(:id,
                                       :letter_id,
                                       :description,
-                                      :to_name,
-                                      :to_address_line,
-                                      :to_address_city,
-                                      :to_address_state,
-                                      :to_address_country,
-                                      :to_address_zip,
                                       :from_name,
                                       :from_address_line,
                                       :from_address_city,

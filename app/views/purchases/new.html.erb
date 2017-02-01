@@ -10,12 +10,6 @@
 <%= form_for @purchase do |f| %>
   Letter_ID:          <%= f.text_field :letter_id, :value => @letter.id %><br>
   Description:        <%= f.text_field :description %> <br>
-  to_name:            <%= f.text_field :to_name %> <br>
-  to_address_line:    <%= f.text_field :to_address_line  %> <br>
-  to_address_city:    <%= f.text_field :to_address_city %> <br>
-  to_address_state:   <%= f.text_field :to_address_state %> <br>
-  to_address_country: <%= f.text_field :to_address_country %> <br>
-  to_address_zip:     <%= f.text_field :to_address_zip %> <br>
   from_name:          <%= f.text_field :from_name, :value => current_user.name %> <br>
   from_address_line:  <%= f.text_field :from_address_line, :value => current_user.address %> <br>
   from_address_city:  <%= f.text_field :from_address_city, :value => "Denver" %> <br>
