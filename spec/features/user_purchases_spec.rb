@@ -15,7 +15,7 @@ describe 'as a user with a created letter' do
     expect(page).to have_content("preview")
   end
 
-  it 'i can order the letter' do 
+  xit 'i can order the letter' do 
     user = User.create(name: "Nick", uid: "1234")
     letter = Letter.create(user_uid: user.uid, letter_body: "hey", status: "draft")
 

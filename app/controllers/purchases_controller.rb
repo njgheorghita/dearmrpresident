@@ -12,8 +12,8 @@ class PurchasesController < ApplicationController
       @letter.save
       redirect_to root_path
     else
+      flash[:danger] = "unsuccessful transaction"
       redirect_to new_purchase(:letter_id => @letter.id)
-      # flash[:failure] = "unsuccessful transaction"
     end
   end
 

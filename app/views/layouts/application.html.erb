@@ -16,6 +16,7 @@
     <% else %>
       <%= link_to "Login with Facebook", "/auth/facebook" %>
     <% end %>
+    <%= render partial: "/layouts/flash" %>
     <%= yield %>
   </body>
 </html>
