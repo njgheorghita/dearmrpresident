@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20170201044146) do
     t.string   "file"
     t.string   "data"
     t.boolean  "color"
+    t.string   "payment_status"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
   end

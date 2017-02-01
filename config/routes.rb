@@ -9,5 +9,5 @@ Rails.application.routes.draw do
   resources :user,                only: [:new, :update]
   resources :letters,             only: [:new, :create]
   resources :purchases,           only: [:new, :create]
-
+  resources :charges
 end
