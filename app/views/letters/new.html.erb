@@ -1,9 +1,13 @@
 <h1> write a letter </h1>
 <h3> dear mr. president </h3>
 
-<%= form_for @letter do |f| %>
-            <%= f.text_area :letter_body %>
-  Status:   <%= f.text_field :status, :value => "draft" %> <br>
-      UID:  <%= f.text_field :user_uid, :value => current_user.uid %>
-            <%= f.submit %>
-<% end %>
+<% if current_user %>
+    <%= form_for @letter do |f| %>
+                <%= f.text_area :letter_body, :id => "letter_body" %>
+    Status:     <%= f.text_field :status, :value => "draft" %> <br>
+    UID:        <%= f.text_field :user_uid, :value => current_user.uid %>
+                <%= f.submit "Submit" %>
+    <% end %>
+<% else %>
+    <p> please login to create a letter </p>
+<% end %> 
