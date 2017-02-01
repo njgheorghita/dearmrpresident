@@ -2,3 +2,14 @@
 <% if current_user %> 
   <%= link_to "Write A Letter", new_letter_path %> 
 <% end %>
+<h3> all letters </h3>
+<% if @letters %>
+  <% @letters.each do |letter| %>
+    <%= letter.letter_body %>,
+    <%= letter.status %>,
+    <%= letter.user_uid %>,
+    <%= letter.created_at %> <br>
+  <% end %>
+<% else %>
+  <p> no letters </p>
+<% end %>
