@@ -25,7 +25,9 @@ describe 'as a user with a created letter' do
 
     click_on "Place Order"
 
-    expect(page).to have_content("order successfully placed")
+    expect(page).to have_content(letter.letter_body)
+    expect(page).to have_content("Sincerely,")
+    expect(page).to have_content(user.name)
   end
 
   # it 'has sad path for order placement' do 

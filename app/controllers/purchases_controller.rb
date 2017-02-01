@@ -6,35 +6,42 @@ class PurchasesController < ApplicationController
 
   def create
     purchase = Purchase.create(purchase_params)
-    redirect_to preview_path(purchase.id)
-    # lob.postcards.create(
-    #   description: , 
-    #   to: {
-    #     name: , 
-    #     address_line1: , 
-    #     address_state: ,
-    #     address_country: ,
-    #     address_zip: 
-    #   }, 
-    #   from: {
-    #     name: ,
-    #     address_line1: ,
-    #     address_state: ,
-    #     address_country: ,
-    #     address_zip: 
-    #   },
-    #   file: ,
-    #   data: {
-
-    #   },
-    #   color: 
-    # )
+    @letter = Letter.find(purchase.letter_id)
+    if order_letter(purchase)
+      @letter.status = "en route"
+      @letter.save
+      redirect_to root_path
+    else
+      redirect_to new_purchase(:letter_id => @letter.id)
+      # flash[:failure] = "unsuccessful transaction"
+    end
   end
 
-  def preview
-    @purchase = Purchase.find(params["id"])
-    @letter   = Letter.find(@purchase.letter_id)
-    render :layout => false
+  def order_letter(purchase)
+    lob.letters.create(
+      description: purchase.description, 
+      to: {
+        name: purchase.to_name, 
+        address_line1: purchase.to_address_line, 
+        address_state: purchase.to_address_state,
+        address_city: purchase.to_address_city,
+        address_country: purchase.to_address_country,
+        address_zip: purchase.to_address_zip
+      }, 
+      from: {
+        name: purchase.from_name,
+        address_line1: purchase.from_address_line,
+        address_state: purchase.from_address_state,
+        address_city: purchase.from_address_city,
+        address_country: purchase.from_address_country,
+        address_zip: purchase.from_address_zip
+      },
+      file: purchase.file ,
+      data: {
+        email: purchase.data
+      },
+      color: purchase.color 
+    )
   end
 
   private 
