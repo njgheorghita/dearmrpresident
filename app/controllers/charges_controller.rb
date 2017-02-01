@@ -1,11 +1,12 @@
 class ChargesController < ApplicationController
+
   def new
-    byebug
+    @purchase = Purchase.find(params[:purchase])
   end
 
   def create
     @amount = 100
-
+    
     customer = Stripe::Customer.create(
       :email  => params[:stripeEmail],
       :source => params[:stripeToken]
@@ -14,7 +15,7 @@ class ChargesController < ApplicationController
     charge = Stripe::Charge.create(
       :customer     => customer.id,
       :amount       => @amount,
-      :description  => "Voise Customer: #{current_user.name}",
+      :description  => "Purchase ID: ",
       :currency     => 'usd'
     )
 

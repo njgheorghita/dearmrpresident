@@ -1,4 +1,9 @@
 class PurchasesController < ApplicationController
+  # def new
+  #   @letter = Letter.find(params[:letter_id])
+  #   @purchase = Purchase.new
+  # end
+
   def new
     @letter = Letter.find(params[:letter_id])
     @purchase = Purchase.new
@@ -6,6 +11,7 @@ class PurchasesController < ApplicationController
 
   def create
     purchase = Purchase.create(purchase_params)
+    byebug
     redirect_to new_charge_path(:purchase => purchase)
     # @letter = Letter.find(purchase.letter_id)
     # if order_letter(purchase)
@@ -38,7 +44,7 @@ class PurchasesController < ApplicationController
         address_country:  purchase.from_address_country,
         address_zip:      purchase.from_address_zip
       },
-      file: purchase.file ,
+      file: purchase.generate_letter ,
       data: {
         email: purchase.data
       },
