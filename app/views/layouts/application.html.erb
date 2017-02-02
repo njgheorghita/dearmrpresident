@@ -10,14 +10,18 @@
   </head>
 
   <body>
-    <%= link_to "Home", root_path %>
-    <% if current_user %>
-      <%= "#{current_user.name} is logged in" %>
-      <%= link_to "Sign Out", session_path(current_user), :method => 'delete' %>
-    <% else %>
-      <%= link_to "Login with Facebook", "/auth/facebook" %>
-    <% end %>
+    <nav class="navbar">
+      <%= link_to "Home", root_path %>
+      <% if current_user %>
+        <%= "#{current_user.name} is logged in" %>
+        <%= link_to "Sign Out", session_path(current_user), :method => 'delete' %>
+      <% else %>
+        <%= link_to "Login with Facebook", "/auth/facebook" %>
+      <% end %>
+    </nav>
     <%= render partial: "/layouts/flash" %>
-    <%= yield %>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>

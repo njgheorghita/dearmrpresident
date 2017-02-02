@@ -2,24 +2,25 @@
 <div class="preview" width="400px">
  <%= render "preview" %>
 </div>
-<%= @letter.letter_body %> <br>
-<%= @letter.user_uid %> <br>
-<%= @letter.status %> <br>
+status: <%= @letter.status %> <br>
 <br>
 <br>
 <%= form_for @purchase do |f| %>
-  Letter_ID:          <%= f.text_field :letter_id, :value => @letter.id %><br>
-  Description:        <%= f.text_field :description %> <br>
-  from_name:          <%= f.text_field :from_name, :value => current_user.name %> <br>
-  from_address_line:  <%= f.text_field :from_address_line, :value => current_user.address %> <br>
-  from_address_city:  <%= f.text_field :from_address_city, :value => "Denver" %> <br>
-  from_address_state: <%= f.text_field :from_address_state, :value => current_user.state %> <br>
-  from_address_country: <%= f.text_field :from_address_country, :value => "US" %> <br>
-  from_address_zip:   <%= f.text_field :from_address_zip, :value => current_user.zipcode %> <br>
-  file:               <%= f.text_field :file %> <br>
-  payment_status:     <%= f.text_field :payment_status, :value => "unpaid" %> <br>
-  data:               <%= f.text_field :data, :value => current_user.email %> <br>
-  color:              <%= f.text_field :color, :value => true %> <br>
+                        <%= f.hidden_field :letter_id,                  :value => @letter.id %>
+  Description:          <%= f.text_field :description %> <br>
+  from_name:            <%= f.text_field :from_name,                    :value => current_user.name %> <br>
+  from_address_line:    <%= f.text_field :from_address_line,            :value => current_user.address %> <br>
+  from_address_city:    <%= f.text_field :from_address_city,            :value => "Denver" %> <br>
+  from_address_state:   <%= f.collection_select :from_address_state,    Purchase::STATES, 
+                                                                        :to_s, 
+                                                                        :to_s, 
+                                                                        :include_blank => true %> <br>
+  from_address_country: <%= f.text_field :from_address_country,         :value => "US" %> <br>
+  from_address_zip:     <%= f.text_field :from_address_zip,             :value => current_user.zipcode %> <br>
+                        <%= f.hidden_field :file %>
+                        <%= f.hidden_field :payment_status,             :value => "unpaid" %>
+  data:                 <%= f.text_field :data,                         :value => current_user.email %> <br>
+                        <%= f.hidden_field :color,                      :value => true %>
 
   <%= f.submit "Place Order" %>
 <% end %>

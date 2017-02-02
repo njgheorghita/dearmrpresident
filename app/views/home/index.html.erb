@@ -4,18 +4,29 @@
 <% end %>
 <% if @letters %>
   <h3> your letters </h3>
-  <% @letters.each do |letter| %>
-    <%= letter.letter_body %>,
-    <%= letter.status %>,
-    <%= letter.user_uid %>,
-    <%= letter.created_at %> 
-    <% if letter.status == "en route" %>
-      <%= link_to "tracking" %>
-    <% else %>
-      <%= link_to "Preview / Purchase", new_purchase_path(:letter_id => letter.id) %>
+  <table>
+    <tr>
+      <th> body </th>
+      <th> status </th>
+      <th> user_id </th>
+      <th> created_at </th>
+      <th> action </th>
+    </tr>
+    <% @letters.each do |letter| %>
+      <tr>
+        <td><%= letter.letter_body %></td>
+        <td><%= letter.status %></td>
+        <td><%= letter.user_uid %></td>
+        <td><%= letter.created_at %></td>
+        <% if letter.status == "en route" %>
+          <td><%= link_to "tracking" %></td>
+        <% else %>
+          <td><%= link_to "Preview / Purchase", new_purchase_path(:letter_id => letter.id) %></td>
+        <% end %>
+      </tr>
+      <br>
     <% end %>
-    <br>
-  <% end %>
+  </table>
 <% else %>
   <p> login with facebook to write your letter </p>
 <% end %>

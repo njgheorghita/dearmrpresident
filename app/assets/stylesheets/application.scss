@@ -16,3 +16,18 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+body {
+  font-family: 'Oswald', sans-serif;
+}
+
+.navbar {
+  background: grey;
+  border-radius: 0px;
+  padding:10px;
+  font-size:1.5em;
+  a {
+    margin:15px;
+    color: white;
+  }
+}
