@@ -11,7 +11,7 @@ describe 'as a user with a created letter' do
     click_on "Preview / Purchase" 
 
     expect(page).to have_content("hey")
-    expect(page).to have_content("1234")
+    expect(page).to have_content("Nick")
     expect(page).to have_content("preview")
   end
 

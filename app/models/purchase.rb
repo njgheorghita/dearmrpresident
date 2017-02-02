@@ -1,4 +1,9 @@
 class Purchase < ApplicationRecord
+  validates :letter_id, :description, :to_name, :to_address_line, :to_address_city, 
+            :to_address_state, :to_address_country, :to_address_zip, :from_name, 
+            :from_address_line, :from_address_city, :from_address_state, :from_address_country,
+            :from_address_state, :from_address_country, :from_address_zip, :file,
+            :data, :payment_status, :color, presence: true
 
   STATES = ["AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS",
             "KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY",
