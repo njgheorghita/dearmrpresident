@@ -8,7 +8,6 @@
     <tr>
       <th> body </th>
       <th> status </th>
-      <th> user_id </th>
       <th> created_at </th>
       <th> action </th>
     </tr>
@@ -16,8 +15,7 @@
       <tr>
         <td><%= letter.letter_body %></td>
         <td><%= letter.status %></td>
-        <td><%= letter.user_uid %></td>
-        <td><%= letter.created_at %></td>
+        <td><%= letter.created_at.strftime("%A, %b %d") %></td>
         <% if letter.status == "en route" %>
           <td><%= link_to "tracking", purchase_path(letter.purchase) %></td>
         <% else %>
