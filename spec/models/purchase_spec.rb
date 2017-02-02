@@ -166,5 +166,15 @@ RSpec.describe Purchase, type: :model do
       expect(purchase).to be_invalid
     end
 
+    it 'is valid with all attributes' do
+      purchase = Purchase.create(letter_id: 1, description: "a", to_name: "b", to_address_line: "c", to_address_city: "b",
+                      to_address_state: "b", to_address_country: "b", to_address_zip: "b", from_name: "b", 
+                      from_address_line: "b", from_address_city: "b", from_address_state: "b", 
+                      from_address_country: "b", from_address_zip: "b", 
+                      file: "<head></head>", data: "email" , payment_status: "paid", color: true )
+
+      expect(purchase).to be_valid
+    end
+
   end
 end

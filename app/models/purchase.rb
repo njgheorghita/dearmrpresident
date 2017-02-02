@@ -4,6 +4,8 @@ class Purchase < ApplicationRecord
             :from_address_line, :from_address_city, :from_address_state, :from_address_country,
             :from_address_state, :from_address_country, :from_address_zip, :file,
             :data, :payment_status, :color, presence: true
+            
+  belongs_to :letter
 
   STATES = ["AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS",
             "KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY",

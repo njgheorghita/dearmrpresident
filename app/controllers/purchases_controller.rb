@@ -17,6 +17,10 @@ class PurchasesController < ApplicationController
     end
   end
 
+  def show
+
+  end
+
   private 
 
   def purchase_params

@@ -19,7 +19,7 @@
         <td><%= letter.user_uid %></td>
         <td><%= letter.created_at %></td>
         <% if letter.status == "en route" %>
-          <td><%= link_to "tracking" %></td>
+          <td><%= link_to "tracking", purchase_path(letter.purchase) %></td>
         <% else %>
           <td><%= link_to "Preview / Purchase", new_purchase_path(:letter_id => letter.id) %></td>
         <% end %>
