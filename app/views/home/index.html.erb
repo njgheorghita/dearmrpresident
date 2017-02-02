@@ -1,0 +1,21 @@
+<h1> dear mr. president </h1>
+<% if current_user %> 
+  <%= link_to "Write A Letter", new_letter_path %> 
+<% end %>
+<% if @letters %>
+  <h3> your letters </h3>
+  <% @letters.each do |letter| %>
+    <%= letter.letter_body %>,
+    <%= letter.status %>,
+    <%= letter.user_uid %>,
+    <%= letter.created_at %> 
+    <% if letter.status == "en route" %>
+      <%= link_to "tracking" %>
+    <% else %>
+      <%= link_to "Preview / Purchase", new_purchase_path(:letter_id => letter.id) %>
+    <% end %>
+    <br>
+  <% end %>
+<% else %>
+  <p> login with facebook to write your letter </p>
+<% end %>

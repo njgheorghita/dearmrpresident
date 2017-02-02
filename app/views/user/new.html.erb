@@ -1,0 +1,13 @@
+<h1> create your account </h1>
+<p> why do we need this info? </p>
+<p> politicians tend to only read letters sent from their constituents</p>
+<p> we need it for return addresses </p>
+<p> is this the right email if you want a response? </p>
+
+<%= form_for @user do |f| %>
+  Street Address: <%= f.text_field :address %><br>
+  State:          <%= f.text_field :state %><br>
+  Zip Code:       <%= f.text_field :zipcode %><br>
+  Email:          <%= f.text_field :email, :value => @user.email %><br>
+                  <%= f.submit "Submit" %>
+<% end %>

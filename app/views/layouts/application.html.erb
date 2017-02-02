@@ -6,9 +6,18 @@
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <link href="https://fonts.googleapis.com/css?family=Oswald|Special+Elite" rel="stylesheet">
   </head>
 
   <body>
+    <%= link_to "Home", root_path %>
+    <% if current_user %>
+      <%= "#{current_user.name} is logged in" %>
+      <%= link_to "Sign Out", session_path(current_user), :method => 'delete' %>
+    <% else %>
+      <%= link_to "Login with Facebook", "/auth/facebook" %>
+    <% end %>
+    <%= render partial: "/layouts/flash" %>
     <%= yield %>
   </body>
 </html>
