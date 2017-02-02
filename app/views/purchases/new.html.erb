@@ -1,26 +1,34 @@
-<h1> purchase preview </h1>
-<div class="preview" width="400px">
+<h1> preview </h1>
+<div>
+  <div class="col-md-6">
+    <p>to:<br>  <%= @politician[:name] %> </p>
+    <p>         <%= @politician[:address_line] %> </p>
+    <p>         <%= "#{@politician[:address_city]}, #{@politician[:address_state]} #{@politician[:address_zip]}" %> </p>
+    <p>         <%= "#{@politician[:address_country]}" %> </p>
+  </div>
+  <div class="col-md-6">
+    <%= form_for @purchase do |f| %>
+                            <%= f.hidden_field :letter_id,                  :value => @letter.id %>
+      Description:          <%= f.text_field :description %> <br>
+      from:<br>           
+                      name: <%= f.text_field :from_name,                    :value => current_user.name %> <br>
+      from_address_line:    <%= f.text_field :from_address_line,            :value => current_user.address %> <br>
+      from_address_city:    <%= f.text_field :from_address_city,            :value => "Denver" %> <br>
+      from_address_state:   <%= f.collection_select :from_address_state,    Purchase::STATES, 
+                                                                            :to_s, 
+                                                                            :to_s, 
+                                                                            {:selected => "CO"} %> <br>
+      from_address_country: <%= f.text_field :from_address_country,         :value => "US" %> <br>
+      from_address_zip:     <%= f.text_field :from_address_zip,             :value => current_user.zipcode %> <br>
+                            <%= f.hidden_field :file %>
+                            <%= f.hidden_field :payment_status,             :value => "unpaid" %>
+      data:                 <%= f.text_field :data,                         :value => current_user.email %> <br>
+                            <%= f.hidden_field :color,                      :value => true %>
+
+      <%= f.submit "Place Order" %>
+    <% end %>
+  </div>
+</div>
+<div class="preview">
  <%= render "preview" %>
 </div>
-status: <%= @letter.status %> <br>
-<br>
-<br>
-<%= form_for @purchase do |f| %>
-                        <%= f.hidden_field :letter_id,                  :value => @letter.id %>
-  Description:          <%= f.text_field :description %> <br>
-  from_name:            <%= f.text_field :from_name,                    :value => current_user.name %> <br>
-  from_address_line:    <%= f.text_field :from_address_line,            :value => current_user.address %> <br>
-  from_address_city:    <%= f.text_field :from_address_city,            :value => "Denver" %> <br>
-  from_address_state:   <%= f.collection_select :from_address_state,    Purchase::STATES, 
-                                                                        :to_s, 
-                                                                        :to_s, 
-                                                                        :include_blank => true %> <br>
-  from_address_country: <%= f.text_field :from_address_country,         :value => "US" %> <br>
-  from_address_zip:     <%= f.text_field :from_address_zip,             :value => current_user.zipcode %> <br>
-                        <%= f.hidden_field :file %>
-                        <%= f.hidden_field :payment_status,             :value => "unpaid" %>
-  data:                 <%= f.text_field :data,                         :value => current_user.email %> <br>
-                        <%= f.hidden_field :color,                      :value => true %>
-
-  <%= f.submit "Place Order" %>
-<% end %>

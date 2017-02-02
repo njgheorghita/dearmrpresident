@@ -1,8 +1,9 @@
 class PurchasesController < ApplicationController
 
   def new
-    @letter = Letter.find(params[:letter_id])
-    @purchase = Purchase.new
+    @letter     = Letter.find(params[:letter_id])
+    @purchase   = Purchase.new
+    @politician = Politician.new.donald_trump
   end
 
   def create
