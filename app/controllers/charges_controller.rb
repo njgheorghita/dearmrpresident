@@ -2,6 +2,7 @@ class ChargesController < ApplicationController
 
   def new
     @purchase = Purchase.find(params[:purchase])
+    @letter   = Letter.find(@purchase.letter_id)
   end
 
   def create
