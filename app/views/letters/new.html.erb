@@ -1,11 +1,14 @@
 <h1> write a letter </h1>
 <h3> dear mr. president </h3>
-
+<br>
 <% if current_user %>
     <%= form_for @letter do |f| %>
-                <%= f.text_area :letter_body, :id => "letter_body" %>
-    Status:     <%= f.text_field :status, :value => "draft" %> <br>
-    UID:        <%= f.text_field :user_uid, :value => current_user.uid %>
+                <%= f.text_area :letter_body, 
+                                :id => "letter_body", 
+                                :placeholder => "The citizen, like the politician, must consider not only how to say what he means but also how to say it persuasively."%><br>
+                <%= f.hidden_field :status, :value => "draft" %>
+                <%= f.hidden_field :user_uid, :value => current_user.uid %>
+    <h3> sincerely, <%= current_user.name %> </h3>            
                 <%= f.submit "Submit" %>
     <% end %>
 <% else %>
