@@ -22,9 +22,9 @@ class ChargesController < ApplicationController
     if charge.status == "succeeded"
       purchase = Purchase.find(params[:purchase_id])
       purchase.update_attributes(payment_status: "paid")
-      Letter.find(purchase.letter_id).update_attributes(status: "en route")
       politician = Politician.new.donald_trump
-      purchase.order_letter(lob, politician)
+      response = purchase.order_letter(lob, politician)
+      Letter.find(purchase.letter_id).update_attributes(status: "en route", expected_delivery_date: response["expected_delivery_date"])
     end
 
     rescue Stripe::CardError => e 

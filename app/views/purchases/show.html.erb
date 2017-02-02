@@ -1,1 +1,10 @@
 <h1> show purchase </h1>
+
+description: <%= @purchase.description %> <br>
+payment: <%= @purchase.payment_status %> <br>
+delivery: <%= @letter.status %> <br>
+expected delivery date: <%= @letter.expected_delivery_date %>
+
+<div class="preview">
+ <%= render "preview" %>
+</div>

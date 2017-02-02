@@ -18,7 +18,9 @@ class PurchasesController < ApplicationController
   end
 
   def show
-
+    # use description to find card
+    @purchase = Purchase.find(params[:id])
+    @letter = @purchase.letter
   end
 
   private 
@@ -27,6 +29,12 @@ class PurchasesController < ApplicationController
     params.require(:purchase).permit(:id,
                                       :letter_id,
                                       :description,
+                                      :to_name,
+                                      :to_address_line,
+                                      :to_address_city,
+                                      :to_address_state,
+                                      :to_address_country,
+                                      :to_address_zip,
                                       :from_name,
                                       :from_address_line,
                                       :from_address_city,
@@ -34,6 +42,7 @@ class PurchasesController < ApplicationController
                                       :from_address_country,
                                       :from_address_zip,
                                       :file,
+                                      :payment_status,
                                       :data,
                                       :color )
   end

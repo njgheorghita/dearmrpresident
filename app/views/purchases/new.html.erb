@@ -10,6 +10,12 @@
     <%= form_for @purchase do |f| %>
                             <%= f.hidden_field :letter_id,                  :value => @letter.id %>
       Description:          <%= f.text_field :description %> <br>
+                            <%= f.hidden_field :to_name,                    :value => @politician[:name] %> 
+                            <%= f.hidden_field :to_address_line,            :value => @politician[:address_line] %> 
+                            <%= f.hidden_field :to_address_city,            :value => @politician[:address_city] %> 
+                            <%= f.hidden_field :to_address_state,           :value => @politician[:address_state] %> 
+                            <%= f.hidden_field :to_address_zip,             :value => @politician[:address_zip] %> 
+                            <%= f.hidden_field :to_address_country,         :value => @politician[:address_country] %> 
       from:<br>           
       name:                 <%= f.text_field :from_name,                    :value => current_user.name %> <br>
       from_address_line:    <%= f.text_field :from_address_line,            :value => current_user.address %> <br>
@@ -20,7 +26,7 @@
                                                                             {:selected => "CO"} %> <br>
       from_address_country: <%= f.text_field :from_address_country,         :value => "US" %> <br>
       from_address_zip:     <%= f.text_field :from_address_zip,             :value => current_user.zipcode %> <br>
-                            <%= f.hidden_field :file %>
+                            <%= f.hidden_field :file,                       :value => "asdf" %>
                             <%= f.hidden_field :payment_status,             :value => "unpaid" %>
       data:                 <%= f.text_field :data,                         :value => current_user.email %> <br>
                             <%= f.hidden_field :color,                      :value => true %>
