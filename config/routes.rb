@@ -8,6 +8,6 @@ Rails.application.routes.draw do
   resources :sessions,            only: [:destroy]
   resources :user,                only: [:new, :update]
   resources :letters,             only: [:new, :create]
-  resources :purchases,           only: [:new, :create]
-
+  resources :purchases,           only: [:new, :create, :show]
+  resources :charges
 end
