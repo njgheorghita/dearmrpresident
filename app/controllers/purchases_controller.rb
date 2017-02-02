@@ -1,8 +1,4 @@
 class PurchasesController < ApplicationController
-  # def new
-  #   @letter = Letter.find(params[:letter_id])
-  #   @purchase = Purchase.new
-  # end
 
   def new
     @letter = Letter.find(params[:letter_id])
@@ -10,46 +6,14 @@ class PurchasesController < ApplicationController
   end
 
   def create
-    purchase = Purchase.create(purchase_params)
-    byebug
-    redirect_to new_charge_path(:purchase => purchase)
-    # @letter = Letter.find(purchase.letter_id)
-    # if order_letter(purchase)
-    #   @letter.status = "en route"
-    #   @letter.save
-    #   redirect_to root_path
-    # else
-    #   flash[:danger] = "unsuccessful transaction"
-    #   redirect_to new_purchase(:letter_id => @letter.id)
-    # end
-  end
-
-  def order_letter(purchase)
-    politician = Politician.new.donald_trump
-    lob.letters.create(
-      description: purchase.description, 
-      to: {
-        name:             politician[:name], 
-        address_line1:    politician[:address_line], 
-        address_state:    politician[:address_state],
-        address_city:     politician[:address_city],
-        address_country:  politician[:address_country],
-        address_zip:      politician[:address_zip]
-      }, 
-      from: {
-        name:             purchase.from_name,
-        address_line1:    purchase.from_address_line,
-        address_state:    purchase.from_address_state,
-        address_city:     purchase.from_address_city,
-        address_country:  purchase.from_address_country,
-        address_zip:      purchase.from_address_zip
-      },
-      file: purchase.generate_letter ,
-      data: {
-        email: purchase.data
-      },
-      color: purchase.color 
-    )
+    if Purchase.find_by(letter_id: purchase_params[:letter_id])
+      purchase = Purchase.find_by(letter_id: purchase_params[:letter_id])
+      flash[:danger] = "You've already sent this letter"
+      redirect_to root_path
+    else
+      purchase = Purchase.create(purchase_params)
+      redirect_to new_charge_path(:purchase => purchase)
+    end
   end
 
   private 

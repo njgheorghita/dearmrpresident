@@ -1,29 +1,29 @@
 class Purchase < ApplicationRecord
 
-  def self.order_letter
+  def order_letter(lob, politician)
     lob.letters.create(
-      description: description, 
+      description:        self.description, 
       to: {
-        name: to_name, 
-        address_line1: to_address_line, 
-        address_state: to_address_state,
-        address_city: to_address_city,
-        address_country: to_address_country,
-        address_zip: to_address_zip
+        name:             politician[:name], 
+        address_line1:    politician[:address_line], 
+        address_state:    politician[:address_state],
+        address_city:     politician[:address_city],
+        address_country:  politician[:address_country],
+        address_zip:      politician[:address_zip]
       }, 
       from: {
-        name: from_name,
-        address_line1: from_address_line,
-        address_state: from_address_state,
-        address_city: from_address_city,
-        address_country: from_address_country,
-        address_zip: from_address_zip
+        name:             self.from_name,
+        address_line1:    self.from_address_line,
+        address_state:    self.from_address_state,
+        address_city:     self.from_address_city,
+        address_country:  self.from_address_country,
+        address_zip:      self.from_address_zip
       },
-      file: file ,
+      file:               self.generate_letter,
       data: {
-        email: data
+        email:            self.data
       },
-      color: color 
+      color:              self.color 
     )
   end
 

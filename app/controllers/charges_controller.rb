@@ -19,9 +19,13 @@ class ChargesController < ApplicationController
       :currency     => 'usd'
     )
 
-    byebug
-    # if charge.status == "succeeded"
-    #   redirect_to
+    if charge.status == "succeeded"
+      purchase = Purchase.find(params[:purchase_id])
+      purchase.update_attributes(payment_status: "paid")
+      Letter.find(purchase.letter_id).update_attributes(status: "en route")
+      politician = Politician.new.donald_trump
+      purchase.order_letter(lob, politician)
+    end
 
     rescue Stripe::CardError => e 
       flash[:error] = e.message
