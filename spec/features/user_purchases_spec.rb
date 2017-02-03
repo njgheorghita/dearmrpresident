@@ -15,9 +15,10 @@ describe 'as a user with a created letter' do
     expect(page).to have_content("preview")
   end
 
-  xit 'i can order the letter' do 
+  xit 'i can create a letter order' do 
     user = User.create(name: "Nick", uid: "1234")
     letter = Letter.create(user_uid: user.uid, letter_body: "hey", status: "draft")
+    purchase = Purchase.create()
 
     page.set_rack_session(user_id: user.uid)
 
