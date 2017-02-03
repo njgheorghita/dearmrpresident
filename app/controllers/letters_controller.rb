@@ -11,6 +11,6 @@ class LettersController < ApplicationController
 
   private
   def letter_params
-    params.require(:letter).permit(:id, :letter_body, :status, :user_uid)
+    params.require(:letter).permit(:id, :letter_body, :status, :user_uid, :picture_url)
   end
 end

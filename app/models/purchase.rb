@@ -1,4 +1,15 @@
 class Purchase < ApplicationRecord
+  validates :letter_id, :description, 
+            :to_name, :to_address_line, :to_address_city, :to_address_state, :to_address_country, :to_address_zip, 
+            :from_name, :from_address_line, :from_address_city, :from_address_state, :from_address_country, :from_address_zip, 
+            :file, :data, :payment_status, :color, presence: true
+            
+  belongs_to :letter
+
+  STATES = ["AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS",
+            "KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY",
+            "NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV",
+            "WI","WY"]
 
   def order_letter(lob, politician)
     lob.letters.create(
@@ -89,9 +100,9 @@ class Purchase < ApplicationRecord
             <div class='wrapper'>
               <p>Dear Mr. President,</p>
 
-              <p><%= %></p>
+              <p>#{ self.letter.letter_body }</p>
               <p>Sincerely,</p>
-              <p class='signature'>#{ self.description }</p>
+              <p class='signature'>#{ self.from_name }</p>
             </div>
           </div>
         </div>

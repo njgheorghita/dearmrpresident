@@ -16,3 +16,40 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+body {
+  font-family: 'Oswald', sans-serif;
+}
+
+.navbar {
+  background: grey;
+  border-radius: 0px;
+  padding:15px;
+  font-size:1.5em;
+  a {
+    margin:20px;
+    color: white;
+  }
+}
+
+.navbar_title {
+  font-family: 'Special Elite';
+  font-size:1.5em
+}
+
+#letter_body {
+  width: 50%;
+  border: 1px solid #337ab7;
+  padding: 15px;
+  border-radius: 5px;
+  font-family: 'Special Elite';
+}
+
+.write_letter_btn {
+  margin-left: 30%;
+  font-size: 2em;
+  border: 1px solid #337ab7;
+  padding: 15px;
+  border-radius: 5px;
+}
+

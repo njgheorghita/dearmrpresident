@@ -19,8 +19,10 @@ ActiveRecord::Schema.define(version: 20170201044146) do
     t.string   "user_uid"
     t.string   "letter_body"
     t.string   "status"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.string   "expected_delivery_date"
+    t.string   "picture_url"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "politicians", force: :cascade do |t|

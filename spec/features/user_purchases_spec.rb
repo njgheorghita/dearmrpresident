@@ -11,26 +11,40 @@ describe 'as a user with a created letter' do
     click_on "Preview / Purchase" 
 
     expect(page).to have_content("hey")
-    expect(page).to have_content("1234")
+    expect(page).to have_content("Nick")
     expect(page).to have_content("preview")
   end
 
-  xit 'i can order the letter' do 
+  xit 'i can create a letter order' do 
     user = User.create(name: "Nick", uid: "1234")
     letter = Letter.create(user_uid: user.uid, letter_body: "hey", status: "draft")
-
     page.set_rack_session(user_id: user.uid)
 
     visit new_purchase_path(:letter_id => letter.id)
 
-    click_on "Place Order"
+    fill_in "from_address_line", with: "address"
+    fill_in "from_address_zip", with: "zip"
+    fill_in "data", with: "email"
+    
 
-    expect(page).to have_content(letter.letter_body)
+    click_on "Place Order"
+    expect(page).to have_content("checkout")
     expect(page).to have_content("Sincerely,")
     expect(page).to have_content(user.name)
   end
 
-  # it 'has sad path for order placement' do 
+  it 'has sad path for order placement' do 
+    user = User.create(name: "Nick", uid: "1234")
+    letter = Letter.create(user_uid: user.uid, letter_body: "hey", status: "draft")
+    page.set_rack_session(user_id: user.uid)
 
-  # end
+    visit new_purchase_path(:letter_id => letter.id)
+
+    # fill_in "name", with: ""
+    
+    click_on "Place Order"
+    expect(page).to have_content("all fields must be filled out")
+    expect(page).to have_content("Sincerely,")
+    expect(page).not_to have_content("checkout")
+  end
 end

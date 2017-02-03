@@ -1,18 +1,38 @@
-<%= form_tag charges_path(:purchase_id => @purchase.id) do %>
-  <article>
-    <% if flash[:error].present? %>
-      <div id="error_explanation">
-        <p><%= flash[:error] %></p>
-      </div>
-    <% end %>
-    <label class="amount">
-      <span>Amount: $1.00</span>
-    </label>
-  </article>
-
-  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-description="Purchase ID: #{@purchase.id}"
-          data-amount="100"
-          data-locale="auto"></script>
-<% end %>
+<div>
+  <h1> checkout </h1>
+  <%= form_tag charges_path(:purchase_id => @purchase.id) do %>
+    <article>
+      <% if flash[:error].present? %>
+        <div id="error_explanation">
+          <p><%= flash[:error] %></p>
+        </div>
+      <% end %>
+      <label class="amount">
+        <span>Amount: $1.00</span>
+      </label>
+    </article>
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+            data-description="Purchase ID: #{@purchase.id}"
+            data-amount="100"
+            data-locale="auto"></script>
+  <% end %>
+  <br>
+  <div class="col-md-6">
+    <p><strong>to:</strong><br>  
+                <%= @purchase[:to_name] %> </p>
+    <p>         <%= @purchase[:to_address_line] %> </p>
+    <p>         <%= "#{@purchase[:to_address_city]}, #{@purchase[:to_address_state]} #{@purchase[:to_address_zip]}" %> </p>
+    <p>         <%= "#{@purchase[:to_address_country]}" %> </p>
+  </div>
+  <div class="col-md-6">
+    <p><strong>from:</strong><br>  
+                <%= @purchase[:from_name] %> </p>
+    <p>         <%= @purchase[:from_address_line] %> </p>
+    <p>         <%= "#{@purchase[:from_address_city]}, #{@purchase[:from_address_state]} #{@purchase[:from_address_zip]}" %> </p>
+    <p>         <%= "#{@purchase[:from_address_country]}" %> </p>
+  </div>
+</div>
+<div class="preview col-md-6">
+ <%= render "preview" %>
+</div>
