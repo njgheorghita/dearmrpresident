@@ -3,7 +3,7 @@
 description: <%= @purchase.description %> <br>
 payment: <%= @purchase.payment_status %> <br>
 delivery: <%= @letter.status %> <br>
-expected delivery: <%= DateTime.parse(@letter.expected_delivery_date).strftime("%A, %b %d") %>
+expected delivery: <%= DateTime.parse(@letter.expected_delivery_date).strftime("%A, %b %d") %><br>
 
 <div class="preview col-md-6">
  <%= render "preview" %>
