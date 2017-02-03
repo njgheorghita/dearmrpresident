@@ -11,13 +11,17 @@
 
   <body>
     <nav class="navbar">
-      <%= link_to "Home", root_path %>
-      <% if current_user %>
-        <%= "#{current_user.name} is logged in" %>
-        <%= link_to "Sign Out", session_path(current_user), :method => 'delete' %>
-      <% else %>
-        <%= link_to "Login with Facebook", "/auth/facebook" %>
-      <% end %>
+      <div class="navbar-left">
+        <%= link_to "Dear Mr. President,", root_path, :class => "navbar_title" %>
+      </div>
+      <div class="navbar-right">
+        <% if current_user %>
+          <%= "#{current_user.name} is logged in" %>
+          <%= link_to "Sign Out", session_path(current_user), :method => 'delete' %>
+        <% else %>
+          <%= link_to "Login with Facebook", "/auth/facebook" %>
+        <% end %>
+      </div>
     </nav>
     <%= render partial: "/layouts/flash" %>
     <div class="container">
