@@ -10,7 +10,7 @@
   <div class="col-md-6">
     <%= form_for @purchase do |f| %>
                             <%= f.hidden_field :letter_id,                  :value => @letter.id %>
-                            <%= f.hidden_field :description,                :value => "LID #{@letter.id} - PID #{@purchase.id}"%>
+                            <%= f.hidden_field :description,                :value => "LID #{@letter.id}"%>
                             <%= f.hidden_field :to_name,                    :value => @politician[:name] %> 
                             <%= f.hidden_field :to_address_line,            :value => @politician[:address_line] %> 
                             <%= f.hidden_field :to_address_city,            :value => @politician[:address_city] %> 
