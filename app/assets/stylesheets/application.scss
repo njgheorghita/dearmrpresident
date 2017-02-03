@@ -39,10 +39,10 @@ body {
 
 #letter_body {
   width: 50%;
-}
-
-.table {
-  margin-top: -15%;
+  border: 1px solid #337ab7;
+  padding: 15px;
+  border-radius: 5px;
+  font-family: 'Special Elite';
 }
 
 .write_letter_btn {

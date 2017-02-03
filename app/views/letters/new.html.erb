@@ -1,5 +1,5 @@
-<h1> write a letter </h1>
-<h3> dear mr. president </h3>
+<h1 style="text-decoration:underline;"> write a letter </h1>
+<h3> Dear Mr. President, </h3>
 <br>
 <% if current_user %>
     <%= form_for @letter do |f| %>
@@ -8,7 +8,9 @@
                                 :placeholder => "The citizen, like the politician, must consider not only how to say what he means but also how to say it persuasively."%><br>
                 <%= f.hidden_field :status, :value => "draft" %>
                 <%= f.hidden_field :user_uid, :value => current_user.uid %>
-    <h3> sincerely, <%= current_user.name %> </h3>            
+    <h3> Sincerely, <br><br>
+                <%= current_user.name %> </h3>
+                <%= f.hidden_field :picture_url %><br>    
                 <%= f.submit "Submit" %>
     <% end %>
 <% else %>

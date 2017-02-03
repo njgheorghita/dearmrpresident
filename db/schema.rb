@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20170201044146) do
     t.string   "letter_body"
     t.string   "status"
     t.string   "expected_delivery_date"
+    t.string   "picture_url"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
