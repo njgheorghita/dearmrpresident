@@ -1,4 +1,5 @@
 class ChargesController < ApplicationController
+  before_action :require_login, only: [:new]
 
   def new
     @purchase = Purchase.find(params[:purchase])
@@ -31,5 +32,14 @@ class ChargesController < ApplicationController
     rescue Stripe::CardError => e 
       flash[:error] = e.message
       redirect_to new_charge_path
+  end
+
+  private
+
+  def require_login
+    if current_user.nil? || params[:purchase].nil?
+      flash[:danger] = "you're not allowed on that page"
+      redirect_to root_path
+    end
   end
 end 

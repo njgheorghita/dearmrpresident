@@ -100,9 +100,9 @@ class Purchase < ApplicationRecord
             <div class='wrapper'>
               <p>Dear Mr. President,</p>
 
-              <p><%= %></p>
+              <p>#{ self.letter.letter_body }</p>
               <p>Sincerely,</p>
-              <p class='signature'>#{ self.description }</p>
+              <p class='signature'>#{ self.from_name }</p>
             </div>
           </div>
         </div>

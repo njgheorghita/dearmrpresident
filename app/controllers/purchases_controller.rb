@@ -9,13 +9,13 @@ class PurchasesController < ApplicationController
   end
 
   def create
-    byebug
     if Purchase.find_by(letter_id: purchase_params[:letter_id])
       flash[:danger] = "You've already sent this letter"
       redirect_to root_path
     else
       purchase = Purchase.new(purchase_params)
       if purchase.save
+        purchase.update_attributes(file: purchase.generate_letter)
         redirect_to new_charge_path(:purchase => purchase)
       else
         flash[:danger] = "all fields must be filled out"
