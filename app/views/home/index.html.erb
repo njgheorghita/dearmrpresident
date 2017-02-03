@@ -4,16 +4,16 @@
 <% end %>
 <% if @letters %>
   <h3> your letters </h3>
-  <table>
+  <table class="table">
     <tr>
-      <th> body </th>
-      <th> status </th>
-      <th> created_at </th>
-      <th> action </th>
+      <th>  </th>
+      <th>  </th>
+      <th>  </th>
+      <th>  </th>
     </tr>
     <% @letters.each do |letter| %>
       <tr>
-        <td><%= letter.letter_body %></td>
+        <td><%= "#{letter.letter_body.slice(0..25)} . . ."  %></td>
         <td><%= letter.status %></td>
         <td><%= letter.created_at.strftime("%A, %b %d") %></td>
         <% if letter.status == "en route" %>

@@ -1,10 +1,11 @@
-<h1> show purchase </h1>
+<div>
+  <h1> show purchase </h1>
 
-description: <%= @purchase.description %> <br>
-payment: <%= @purchase.payment_status %> <br>
-delivery: <%= @letter.status %> <br>
-expected delivery: <%= DateTime.parse(@letter.expected_delivery_date).strftime("%A, %b %d") %><br>
-
+  description: <%= @purchase.description %> <br>
+  payment: <%= @purchase.payment_status %> <br>
+  delivery: <%= @letter.status %> <br>
+  expected delivery: <%= DateTime.parse(@letter.expected_delivery_date).strftime("%A, %b %d") %><br>
+</div>
 <div class="preview col-md-6">
  <%= render "preview" %>
 </div>
