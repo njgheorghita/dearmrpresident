@@ -24,21 +24,20 @@
               <td><%= link_to "Delete", letter_path(letter), :method => :delete%></td>
             <% end %>
           </tr>
-          <br>
         <% end %>
       </table>
     <% end %>
   <% else %>
     <h1> for $1, send a physical letter to your president from your browser. </h1>
     <br>
-    <h2> as long as we have an open forum for discussion of ideas, democracy should be ok. </h2>
-    <br>
-    <h5> *disclaimer* this website has been built using test api keys for Lob and Stripe. so no letters will be sent and no cards will be charged. </h5>
-    <h5> feel free to use the test cc number 4242-4242-4242-4242 to give it a test drive. </h5>
-    <h5> in reality, physical letters are the least efficient method to share your opinion with our politicians. (because, anthrax) </h5>
-    <h5> a much more effective strategy is a site like <a href="https://faxzero.com/fax_senate.php" target="_blank"> Fax Zero</a>. </h5>
-    <h5> an incredible site that allows you to fax your senators from your browser, for free.  </h5>
-    <h5> successfully avoiding the security issue of physical mail, while preserving the gravitas of a physical message. </h5>
-    <h5> good luck, America. </h5>
+    <h2> as long as we maintain an open forum for discussion of ideas, democracy should be ok. </h2>
+    <hr>
+    <h4> *disclaimer* this website has been built using <strong>test</strong> api keys for Lob and Stripe. so no letters will actually be sent and no cards will actually be charged. </h4>
+    <h6> feel free to use the test cc number 4242-4242-4242-4242 to see both of these apis in action. </h6>
+    <h4> in reality, physical letters are the least efficient method to share your opinion with our politicians. (because, anthrax) </h4>
+    <h4> a much more effective strategy to make your voice count is through a site like <a href="https://faxzero.com/fax_senate.php" target="_blank"> Fax Zero</a>. </h4>
+    <h4> this incredible site allows you to fax your senators from your browser, for free. </h4>
+    <h4> successfully avoiding the security issue of physical mail, while preserving the gravitas of a physical message. </h4>
+    <h4> good luck, America. </h4>
   <% end %>
 </div>

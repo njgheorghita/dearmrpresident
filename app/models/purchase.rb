@@ -55,35 +55,41 @@ class Purchase < ApplicationRecord
           -moz-box-sizing: border-box;
           box-sizing: border-box;
         }
+
         body {
           width: 8.5in;
           height: 11in;
           margin: 0;
           padding: 0;
-          font-family: 'Special Elite', cursive;
         }
+        
         .page {
           page-break-after: always;
+          overflow: hidden;
+          border: 2px solid black;
+          border-radius: 5px;
         }
         .page-content {
-          overflow: hidden;
           position: relative;
           width: 7in;
           height: 10.625in;
-          left: 0.75in;
-          top: 0.1875in;
+          left: 0.5in;
           text-align: center;
           margin-left: auto;
-          margin-right:auto
+          margin-right:auto;
         }
         #logo {
           position: absolute;
           top: 0;
           margin-bottom: -100px;
+          margin-left: 70px;
         }
         .wrapper {
-          position: absolute;
-          top: 2.75in;
+          position: relative;
+          font-family: 'Special Elite';
+          top: 3in;
+          left: -0.75in;
+          max-width: 50%;
         }
         .signature {
           font-family: 'Loved by the King';
