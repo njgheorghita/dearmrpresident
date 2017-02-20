@@ -8,6 +8,7 @@
                                 :placeholder => "The citizen, like the politician, must consider not only how to say what he means but also how to say it persuasively."%><br>
                 <%= f.hidden_field :status, :value => "draft" %>
                 <%= f.hidden_field :user_uid, :value => current_user.uid %>
+    Chars left: <span id="counter" data-maximum-length="<%= @maximum_length %>"><%= @maximum_length %></span>
     <h3> Sincerely, <br><br>
                 <%= current_user.name %> </h3>
                 <%= f.hidden_field :picture_url %><br>    
@@ -16,3 +17,17 @@
 <% else %>
     <p> please login to create a letter </p>
 <% end %> 
+
+
+<script>
+    $(document).ready(function() {
+      var letter_body = $("#letter_body");
+      var counter     = $("#counter");
+      var max_length  = counter.data("maximum-length");
+
+      letter_body.keyup(function() {
+          counter.text(max_length - $(this).val().length);
+      });
+
+    });
+</script>
