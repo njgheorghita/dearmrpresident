@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get   '/purchases/:id/preview',   to: 'purchases#preview', as: "preview"
   resources :sessions,            only: [:destroy]
   resources :user,                only: [:new, :update]
-  resources :letters,             only: [:new, :create]
+  resources :letters,             only: [:new, :create, :destroy]
   resources :purchases,           only: [:new, :create, :show]
   resources :charges
 end

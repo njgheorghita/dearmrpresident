@@ -10,6 +10,7 @@
         <th> Delivery Status </th>
         <th> Created On </th>
         <th>  </th>
+        <th>  </th>
       </tr>
       <% @letters.each do |letter| %>
         <tr>
@@ -18,8 +19,10 @@
           <td><%= letter.created_at.strftime("%A, %b %d") %></td>
           <% if letter.status == "en route" %>
             <td><%= link_to "tracking", purchase_path(letter.purchase) %></td>
+            <td> purchased </td>
           <% else %>
             <td><%= link_to "Preview / Purchase", new_purchase_path(:letter_id => letter.id) %></td>
+            <td><%= link_to "Delete", letter_path(letter), :method => :delete%></td>
           <% end %>
         </tr>
         <br>

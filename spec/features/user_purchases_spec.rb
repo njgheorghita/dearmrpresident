@@ -15,6 +15,18 @@ describe 'as a user with a created letter' do
     expect(page).to have_content("preview")
   end
 
+  it 'i can delete that letter' do 
+    user = User.create(name: "Nick", uid: "1234")
+    Letter.create(user_uid: user.uid, letter_body: "hey", status: "draft")
+
+    page.set_rack_session(user_id: user.uid)
+    visit root_path
+
+    click_on "Delete"
+
+    expect(Letter.all.count).to eq 0
+  end
+
   xit 'i can create a letter order' do 
     user = User.create(name: "Nick", uid: "1234")
     letter = Letter.create(user_uid: user.uid, letter_body: "hey", status: "draft")
