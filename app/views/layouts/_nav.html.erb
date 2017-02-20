@@ -1,0 +1,13 @@
+    <nav class="navbar">
+      <div class="navbar-left">
+        <%= link_to "Dear Mr. President,", root_path, :class => "navbar_title" %>
+      </div>
+      <div class="navbar-right">
+        <% if current_user %>
+          <%= "#{current_user.name} is logged in" %>
+          <%= link_to "Sign Out", session_path(current_user), :method => 'delete' %>
+        <% else %>
+          <%= link_to "Login/Signup with Facebook to write your letters", "/auth/facebook" %>
+        <% end %>
+      </div>
+    </nav>

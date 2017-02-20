@@ -1,34 +1,44 @@
 <div>
   <% if current_user %> 
-    <p><%= link_to "Write Your President A Letter", new_letter_path, :class => "write_letter_btn" %> </p>
-  <% end %>
-  <% if @letters %>
-    <h3> your letters </h3>
-    <table class="table">
-      <tr>
-        <th> Letter </th>
-        <th> Delivery Status </th>
-        <th> Created On </th>
-        <th>  </th>
-        <th>  </th>
-      </tr>
-      <% @letters.each do |letter| %>
+    <p><%= link_to "Draft a letter to your President", new_letter_path, :class => "write_letter_btn" %> </p>
+    <% if @letters %>
+      <h3> your letters </h3>
+      <table class="table">
         <tr>
-          <td><%= "#{letter.letter_body.slice(0..25)} . . ."  %></td>
-          <td><%= letter.status %></td>
-          <td><%= letter.created_at.strftime("%A, %b %d") %></td>
-          <% if letter.status == "en route" %>
-            <td><%= link_to "tracking", purchase_path(letter.purchase) %></td>
-            <td> purchased </td>
-          <% else %>
-            <td><%= link_to "Preview / Purchase", new_purchase_path(:letter_id => letter.id) %></td>
-            <td><%= link_to "Delete", letter_path(letter), :method => :delete%></td>
-          <% end %>
+          <th> Letter </th>
+          <th> Delivery Status </th>
+          <th> Created On </th>
+          <th>  </th>
+          <th>  </th>
         </tr>
-        <br>
-      <% end %>
-    </table>
+        <% @letters.each do |letter| %>
+          <tr>
+            <td><%= "#{letter.letter_body.slice(0..25)} . . ."  %></td>
+            <td><%= letter.status %></td>
+            <td><%= letter.created_at.strftime("%A, %b %d") %></td>
+            <% if letter.status == "en route" %>
+              <td><%= link_to "tracking", purchase_path(letter.purchase) %></td>
+              <td> purchased </td>
+            <% else %>
+              <td><%= link_to "Preview / Purchase", new_purchase_path(:letter_id => letter.id) %></td>
+              <td><%= link_to "Delete", letter_path(letter), :method => :delete%></td>
+            <% end %>
+          </tr>
+          <br>
+        <% end %>
+      </table>
+    <% end %>
   <% else %>
-    <p> login with facebook to write your letter </p>
+    <h1> for $1, send a physical letter to your president from your browser. </h1>
+    <br>
+    <h2> as long as we have an open forum for discussion of ideas, democracy should be ok. </h2>
+    <br>
+    <h5> *disclaimer* this website has been built using test api keys for Lob and Stripe. so no letters will be sent and no cards will be charged. </h5>
+    <h5> feel free to use the test cc number 4242-4242-4242-4242 to give it a test drive. </h5>
+    <h5> in reality, physical letters are the least efficient method to share your opinion with our politicians. (because, anthrax) </h5>
+    <h5> a much more effective strategy is a site like <a href="https://faxzero.com/fax_senate.php" target="_blank"> Fax Zero</a>. </h5>
+    <h5> an incredible site that allows you to fax your senators from your browser, for free.  </h5>
+    <h5> successfully avoiding the security issue of physical mail, while preserving the gravitas of a physical message. </h5>
+    <h5> good luck, America. </h5>
   <% end %>
 </div>
