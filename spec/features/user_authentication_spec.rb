@@ -9,7 +9,7 @@ describe 'User logs in via Facebook Oauth' do
     visit root_path
     
     expect(page).to     have_content("Sign Out")
-    expect(page).to     have_content("Write A Letter")
+    expect(page).to     have_content("Draft a letter")
     expect(page).not_to have_content("Login with Facebook")
   end
 
@@ -20,9 +20,9 @@ describe 'User logs in via Facebook Oauth' do
 
     visit root_path
 
-    expect(page).to have_content("Write A Letter")
+    expect(page).to have_content("Draft a letter")
     click_on "Sign Out"
 
-    expect(page).to have_content("Login with Facebook")
+    expect(page).to have_content("Login/Signup with Facebook")
   end
 end
