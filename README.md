@@ -8,5 +8,5 @@ Features:
 - Login via Facebook Oauth
 - Draft letters in your browser
 - Payment processing via Stripe API
-- Physical mail sent via Lob API
+- Physical mail sent to the White House, via Lob API
 - Letter confirmation / preview / tracking via Lob API
