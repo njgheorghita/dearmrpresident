@@ -1,8 +1,8 @@
 # README
 
-[Dear Mr. President,](dearmrpresident.herokuapp.com)
+##[Dear Mr. President,](dearmrpresident.herokuapp.com)
 
-"The citizen, like the politician, must consider not only how to say what he means but also how to say it persuasively."
+### "The citizen, like the politician, must consider not only how to say what he means but also how to say it persuasively."
 
 Features: 
 - Login via Facebook Oauth
