@@ -9,7 +9,7 @@ class PurchasesController < ApplicationController
   end
 
   def create
-    if Purchase.find_by(letter_id: purchase_params[:letter_id])
+    if Purchase.find_by(letter_id: purchase_params[:letter_id]) && Purchase.find_by(letter_id: purchase_params[:letter_id]).payment_status == "paid"
       flash[:danger] = "You've already sent this letter"
       redirect_to root_path
     else
