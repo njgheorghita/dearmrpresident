@@ -1,24 +1,12 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+(Dear Mr. President,)[dearmrpresident.herokuapp.com]
 
-Things you may want to cover:
+"The citizen, like the politician, must consider not only how to say what he means but also how to say it persuasively."
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Features: 
+- Login via Facebook Oauth
+- Draft letters in your browser
+- Payment processing via Stripe API
+- Physical mail sent via Lob API
+- Letter confirmation / preview / tracking via Lob API
